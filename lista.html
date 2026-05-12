@@ -1,70 +1,136 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>velora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>velora</title>
 </head>
+
 <body>
-    <!--
-    Thaifold,nemeto,egyiptom,francia
-    -->
-    <nav class=" navbar navbar-expand-lg navbar-light bg-light border-">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">velora©</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item">
-          <a class="nav-link" href="fooldal.html">Fő oldal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="lista.html">utazasok listaja</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="foglalas.html">Foglalj itt!</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sfoglalas.html">sajat foglalásod</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        Foglalj most!
-      </span>
+  <nav class=" navbar navbar-expand-lg navbar-light bg-light border-">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="fooldal.html">velora©</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="fooldal.html">Fő oldal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="lista.html">Utazások listája</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="foglalas.html">Foglalj itt!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sfoglalas.html">Saját foglalásod</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Foglalj most!
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="bg-primary">
+    <header class="text-center p-5 container-fluid text-light mt-5">
+      <h2>Utazások</h2>
+    </header>
+  </div>
+
+  <div class="container mt-5 ">
+    <div class="row d-flex align-items-center justify-content-center gap-4 ">
+      <div class="col-lg-7 col-md-12 rounded bg-light border border-info border-2">
+        <!-- thaifold -->
+        <div id="Thaifold">
+          <h2 class="text-primary p-2">Thaiföld</h2>
+          <img src="kepek/thaifold.jpg" alt="Thaiföld" width="100%">
+          <p>Thaiföld olyan hely, ahol a hófehér homokos partok, türkizkék tengerek és aranyban ragyogó buddhista
+            templomok szinte mesebeli hangulatot teremtenek. A nyüzsgő Bangkok fölé magasodó templomok, a dzsungelekkel
+            borított hegyvidékek és a lélegzetelállító Phi Phi-szigetek minden utazót lenyűgöznek. Naplementében hajózni
+            a sziklák között, felfedezni az éjszakai piacok fényáradatát vagy egy trópusi szigeten pihenni igazi
+            bakancslistás élmény. Thaiföld nemcsak nyaralás, hanem egy különleges világ, ahol a természet, a kultúra és
+            az egzotikus hangulat egyszerre varázsol el.</p>
+          <div class="text-center">
+            <button onclick="foglalas()"
+              class="text-end p-3  bg-primary text-light  border border-info border-4 rounded-pill shadow-lg">
+              <span>Foglalás</span>
+            </button>
+          </div>
+        </div>
+        <hr>
+
+        <!-- nemeto -->
+        <div id="Nemeto">
+          <h2 class="text-primary p-2">Németország</h2>
+          <img src="kepek/nemeto.jpg" alt="Németország" width="100%">
+          <p>Németország tökéletes úti cél azoknak, akik egyszerre szeretnének mesébe illő városokat, történelmi
+            helyszíneket és lenyűgöző természeti tájakat felfedezni. A romantikus Neuschwanstein kastély, a modern és
+            pezsgő Berlin, valamint a Rajna menti várak különleges hangulatot adnak az országnak. Télen a karácsonyi
+            vásárok fényei varázsolják el az utazókat, nyáron pedig az alpesi tavak és hegyek kínálnak felejthetetlen
+            látványt. Németországban minden városnak saját hangulata van, így az utazás egyszerre lehet kulturális,
+            romantikus és kalandos élmény.</p>
+          <div class="text-center">
+            <button onclick="foglalas()"
+              class="text-end p-3  bg-primary text-light  border border-info border-4 rounded-pill shadow-lg">
+              <span>Foglalás</span>
+            </button>
+          </div>
+        </div>
+        <hr>
+
+        <!-- egyiptom -->
+        <div id="egyiptom">
+          <h2 class="text-primary p-2">Egyiptom</h2>
+          <img src="kepek/egyiptom.jpg" alt="Egyiptom" width="100%">
+          <p>Egyiptom az ókori világ egyik legizgalmasabb úti célja, ahol hatalmas piramisok, aranyhomokos sivatagok és
+            különleges tengerpartok várják az utazókat. A legendás Gízai piramisok és a titokzatos Nagy Szfinx élőben
+            még lenyűgözőbb látványt nyújtanak, miközben a Nílus mentén hajózva az ember valóban visszarepül az időben.
+            A Vörös-tenger kristálytiszta vize és színpompás korallvilága a búvárkodás egyik paradicsoma. Egyiptom
+            egyszerre kínál történelmi csodákat, egzotikus hangulatot és felejthetetlen kalandokat.</p>
+          <div class="text-center">
+            <button onclick="foglalas()"
+              class="text-end p-3  bg-primary text-light  border border-info border-4 rounded-pill shadow-lg">
+              <span>Foglalás</span>
+            </button>
+          </div>
+        </div>
+        <hr>
+
+        <!-- fraciao -->
+        <div id="franciao">
+          <h2 class="text-primary p-2">Franciaország</h2>
+          <img src="kepek/francia.jpg" alt="Franciaország" width="100%">
+          <p>Franciaország a romantika, a művészet és az elegancia hazája, ahol minden város és táj különleges
+            hangulatot áraszt. A csillogó Eiffel-torony, a levendulamezőkkel borított Provence és a mesés francia
+            kastélyok olyan látványt nyújtanak, mintha egy film díszletei lennének. A tengerparti Francia Riviéra
+            luxushangulata, a hangulatos kávézók és a világhírű francia gasztronómia minden utazást felejthetetlenné
+            tesz. Franciaország egyszerre kínál romantikus kikapcsolódást, kulturális élményeket és lélegzetelállító
+            tájakat.</p>
+          <div class="text-center">
+            <button onclick="foglalas()"
+              class="text-end p-3  bg-primary text-light  border border-info border-4 rounded-pill shadow-lg">
+              <span>Foglalás</span>
+            </button>
+          </div>
+          <hr>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
-    <div class="container mt-4  ">
-        <div class="row d-flex align-items-center justify-content-center gap-4 ">
-            <div class="col-lg-7 col-md-12 rounded bg-light border border-info">
-                <div class="text-primary p-3 h2"><h1>Utazások</h1></div>
-                <div id="Thaifold">
-                    
-                    <h2 class="text-primary">Thaiföld</h2>
-                    <img src="thaifold.jpg" alt="Thaiföld"  width="100%">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed natus inventore itaque voluptatem. Quia, qui voluptas. Officia dignissimos consequatur placeat omnis cumque nobis illo consequuntur, ullam optio, quas voluptatibus.
-                    Iure ipsa in iste ipsum possimus labore omnis non quaerat corrupti ullam animi nostrum, libero repellat architecto aperiam! Ab perferendis a impedit illo est possimus cumque vel, animi quasi distinctio.</p>
-                </div>
-                <hr>
-                <div id="Nemeto">
-                    <h2 class="text-primary">Németország</h2>
-                    <img src="nemeto.jpg" alt="Németország" width="100%">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat natus mollitia, deleniti doloribus voluptatem minus magnam error eligendi! Quod hic deleniti amet consequatur ad. Repellendus a tenetur nostrum possimus ipsum!
-                    At perspiciatis nemo magnam ad reprehenderit dolores delectus autem consectetur. Quis exercitationem illo magni ab saepe. Expedita obcaecati iusto dignissimos perferendis quam accusamus impedit, fugiat, aliquid neque quia quisquam explicabo!</p>
-                </div>
-                <hr>
-                <div id="egyiptom">
-                    <h2 class="text-primary">Egyiptom</h2>
-                    <img src="" alt="" width="100%">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quisquam quasi non? Voluptate maxime consequatur distinctio incidunt quis molestias ut? Eaque itaque earum cum sit explicabo similique corporis vitae modi!
-                    Velit ex facere reiciendis aspernatur rem sunt odio deserunt quas amet saepe quos nihil ipsa, eos voluptatibus enim! Soluta explicabo molestiae aliquid voluptatibus facere praesentium quos debitis possimus optio eius!</p>
-                </div>
-                <hr>
-            </div>
-        </div>
-    </div>
 </body>
+
+<script>
+  function foglalas() {
+    window.location.href = "foglalas.html";
+  }
+</script>
+
 </html>
