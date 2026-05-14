@@ -74,6 +74,57 @@
           <input type="number" class="form-control" id="szemelyekSzama" min="1" value="1" required>
         </div>
 
+         <!-- Vegosszeg -->
+        <div class="ar-doboz mb-4">
+          Vegosszeg: <span id="vegosszeg">0</span> Ft
+        </div>
+
+
+        <!-- Foglalas-->
+        <button type="submit" class="btn btn-primary foglalas-gomb">
+          Foglalas Kuldes
+        </button>
+
+      </form>
+
+      <!-- Sajat foglalasok gomb -->
+      <a href="sfoglalas.html" id="sajatFoglalasokGomb" class="btn btn-success mt-4 w-100">
+        Sajat foglalasaim
+      </a>
+
+    </div>
+
+  </div>
+ <script>
+    const helyszin = document.getElementById("helyszin");
+    const szemelyekSzama = document.getElementById("szemelyekSzama");
+    const vegosszeg = document.getElementById("vegosszeg");
+    const foglalasiForm = document.getElementById("foglalasiForm");
+    const sajatFoglalasokGomb = document.getElementById("sajatFoglalasokGomb");
+
+    function arFrissites() {
+
+      const alapAr = Number(helyszin.value);
+      const letszam = Number(szemelyekSzama.value);
+
+      const teljesAr = alapAr * letszam;
+
+      vegosszeg.textContent = teljesAr.toLocaleString("hu-HU");
+    }
+
+     helyszin.addEventListener("change", arFrissites);
+    szemelyekSzama.addEventListener("input", arFrissites);
+
+    foglalasiForm.addEventListener("submit", function(esemeny) {
+
+      esemeny.preventDefault();
+
+      alert("Sikeres foglalas!");
+
+      sajatFoglalasokGomb.style.display = "block";
+    });
+  </script>
+
 </body>
 
 </html>
