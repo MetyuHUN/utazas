@@ -38,13 +38,75 @@
       </div>
     </div>
   </nav>
+
   <div class="bg-primary">
-    <nav></nav>
     <header class="text-center h2 p-3 container-fluid bg-primary text-light mt-5">VELORA UTAZÁSI IRODA</header>
     <h5 class="text-center h5 p-2 container-fluid bg-primary text-light mt-4">Itt láthatod a saját foglalásaidat!</h5>
   </div>
   <div class="text-center">
   </div>
+
+  <div class="container mt-5 ">
+    <div class="row d-flex align-items-center justify-content-center gap-4 ">
+      <div class="col-lg-7 col-md-12 rounded bg-light border border-info border-2">
+        <table class="container-fluid mt-3 mb-3" id="tablaFoglalas">
+          <tr>
+            <th>Név:</th>
+            <th>Helyszin:</th>
+            <th>Időpont:</th>
+            <th>Személyek száma:</th>
+            <th>Végösszeg:</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabaladat = document.getElementById("tablaFoglalas");
+    const adatok = JSON.parse(localStorage.getItem("foglas"));
+    const snev = prompt("Név:").trim().toLowerCase();
+
+
+    if (adatok.length === 0) {
+      tabaladat.innerHTML = `<tr><td colspan="5">Nincs mentett foglalás.</td></tr>`;
+    } else {
+
+
+      const szurfoglasok = adatok.filter(function (foglalas) {
+        if (snev.includes("admin")) {
+          window.location.href = "admin.html"
+        }
+        return foglalas.nev.toLowerCase().includes(snev);
+      });
+
+      if (szurfoglasok.length === 0) {
+        tabaladat.innerHTML = `<tr><td >Nincs ilyen néven foglalás!</td></tr>`;
+      } else {
+        szurfoglasok.forEach(function (fog) {
+
+          let helyszin = "";
+          if (fog.helyszin === "50000") helyszin = "Németország";
+          else if (fog.helyszin === "80000") helyszin = "Franciaország";
+          else if (fog.helyszin === "120000") helyszin = "Egyiptom";
+          else if (fog.helyszin === "150000") helyszin = "Thaiföld";
+
+          const tabla = `
+          <tr class="border-bottom border-dark">
+            <td >${fog.nev}</td>
+            <td>${helyszin}</td>
+            <td>${fog.idopont}</td>
+            <td>${fog.szemelyekSzama}</td>
+            <td>${fog.vegosszeg.toLocaleString("hu-HU") + " Ft"}</td>
+          </tr>`;
+
+          tabaladat.innerHTML += tabla;
+
+        });
+
+      }
+    }
+  </script>
 </body>
 
 </html>

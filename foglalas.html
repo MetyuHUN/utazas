@@ -39,89 +39,128 @@
     </div>
   </nav>
 
-  <div class="container">
+  <div class="bg-primary">
+    <header class="text-center h2 p-3 container-fluid bg-primary text-light mt-5">VELORA UTAZÁSI IRODA</header>
+    <h5 class="text-center h5 p-2 container-fluid bg-primary text-light mt-4">Foglalj most!</h5>
+  </div>
+  <div class="text-center">
+  </div>
 
-    <div class="foglalas-kartya">
+  <div class="container mt-5 ">
+    <div class="row d-flex align-items-center justify-content-center gap-4 ">
+      <div class="col-lg-7 col-md-12 rounded bg-light border border-info border-2">
+        <div class="container mt-3 mb-3">
 
-      <h2 class="foglalas-cim">Utazas Foglalas</h2>
+          <div class="foglalas-kartya">
 
-      <form id="foglalasiForm">
+            <form id="foglalasiForm">
+              <!-- Nev -->
+             <div class="mb-3">
+              <Label>Név</Label>
 
-        <!-- Helyszin -->
-        <div class="mb-3">
-          <label class="form-label">Helyszin</label>
+              <input type="text" id="nev" class="form-control" required>
+             </div>
+              <!-- Helyszin -->
+              <div class="mb-3">
+                <label class="form-label">Helyszin</label>
 
-          <select class="form-select" id="helyszin" required>
-            <option value="">Valassz helyszint</option>
-            <option value="50000">Németország - 50 000 Ft</option>
-            <option value="80000">Franciaország - 80 000 Ft</option>
-            <option value="120000">Egyiptom - 120 000 Ft</option>
-            <option value="150000">Thaiföld - 150 000 Ft</option>
-          </select>
+                <select class="form-select" id="helyszin" required>
+                  <option value="" hidden>Valassz helyszint</option>
+                  <option value="50000">Németország - 50 000 Ft</option>
+                  <option value="80000">Franciaország - 80 000 Ft</option>
+                  <option value="120000">Egyiptom - 120 000 Ft</option>
+                  <option value="150000">Thaiföld - 150 000 Ft</option>
+                </select>
+              </div>
+
+              <!--ido -->
+              <div class="mb-3">
+                <label class="form-label">Idopont</label>
+
+                <input type="datetime-local" class="form-control" id="idopont" required>
+              </div>
+
+              <!-- Szemelyek-->
+              <div class="mb-4">
+                <label class="form-label">Szemelyek szama</label>
+
+                <input type="number" class="form-control" id="szemelyekSzama" min="1" value="1" required>
+              </div>
+
+              <!-- Vegosszeg -->
+              <div class="ar-doboz mb-4">
+                Vegosszeg: <span id="vegosszeg">0</span> Ft
+              </div>
+
+
+              <!-- Foglalas-->
+              <button type="submit" class="btn btn-primary foglalas-gomb">
+                Foglalas Kuldes
+              </button>
+
+            </form>
+
+            <!-- Sajat foglalasok gomb -->
+            <a href="sfoglalas.html" id="sajatFoglalasokGomb" class="btn btn-success mt-4 w-100">
+              Sajat foglalasaim
+            </a>
+
+          </div>
         </div>
-
-         <!--ido -->
-        <div class="mb-3">
-          <label class="form-label">Idopont</label>
-
-          <input type="datetime-local" class="form-control" id="idopont" required>
-        </div>
-
-        <!-- Szemelyek-->
-        <div class="mb-4">
-          <label class="form-label">Szemelyek szama</label>
-
-          <input type="number" class="form-control" id="szemelyekSzama" min="1" value="1" required>
-        </div>
-
-         <!-- Vegosszeg -->
-        <div class="ar-doboz mb-4">
-          Vegosszeg: <span id="vegosszeg">0</span> Ft
-        </div>
-
-
-        <!-- Foglalas-->
-        <button type="submit" class="btn btn-primary foglalas-gomb">
-          Foglalas Kuldes
-        </button>
-
-      </form>
-
-      <!-- Sajat foglalasok gomb -->
-      <a href="sfoglalas.html" id="sajatFoglalasokGomb" class="btn btn-success mt-4 w-100">
-        Sajat foglalasaim
-      </a>
-
+      </div>
     </div>
 
   </div>
- <script>
+  <script>
+    const nev=document.getElementById("nev");
     const helyszin = document.getElementById("helyszin");
+    const idopont=document.getElementById("idopont")
     const szemelyekSzama = document.getElementById("szemelyekSzama");
     const vegosszeg = document.getElementById("vegosszeg");
     const foglalasiForm = document.getElementById("foglalasiForm");
     const sajatFoglalasokGomb = document.getElementById("sajatFoglalasokGomb");
-
+    let teljesAr=0
     function arFrissites() {
-
-      const alapAr = Number(helyszin.value);
+      
+      const alapAr = helyszin.value;
       const letszam = Number(szemelyekSzama.value);
 
-      const teljesAr = alapAr * letszam;
+      teljesAr = alapAr * letszam;
 
       vegosszeg.textContent = teljesAr.toLocaleString("hu-HU");
+      
     }
 
-     helyszin.addEventListener("change", arFrissites);
+    helyszin.addEventListener("change", arFrissites);
     szemelyekSzama.addEventListener("input", arFrissites);
 
-    foglalasiForm.addEventListener("submit", function(esemeny) {
+    foglalasiForm.addEventListener("submit", function (esemeny) {
 
       esemeny.preventDefault();
+
+      let adatok = localStorage.getItem("foglas");
+      if (adatok) {
+        adatok = JSON.parse(adatok);
+      } else {
+        adatok = [];
+      }
+      
+      //adatok atvetele
+      const ujadat={
+        nev: nev.value,
+        helyszin: helyszin.value,
+        idopont: idopont.value,
+        szemelyekSzama: szemelyekSzama.value,
+        vegosszeg: teljesAr
+      };
+      //adatok betoltese
+      adatok.push(ujadat);
+      localStorage.setItem("foglas", JSON.stringify(adatok));
 
       alert("Sikeres foglalas!");
 
       sajatFoglalasokGomb.style.display = "block";
+      
     });
   </script>
 
